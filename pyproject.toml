@@ -1,16 +1,25 @@
-[tool.poetry]
+[project]
 name = "mousejiggler"
 version = "0.1.0"
 description = ""
-authors = ["Harry Pan <pan.xingzhi@gmail.com>"]
+authors = [{name = "Harry Pan", email = "pan.xingzhi@gmail.com"}]
 readme = "README.md"
-package-mode = false
+requires-python = ">=3.12"
+dependencies = [
+    "pyautogui>=0.9.54",
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-pyautogui = "^0.9.54"
+[project.scripts]
+mouse-jiggler = "mouse_jiggler:main"
 
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+exclude = [
+    "/.git",
+    "/.venv",
+    "__pycache__",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
